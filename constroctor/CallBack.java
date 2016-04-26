@@ -6,12 +6,11 @@ public class CallBack {
 }
 
 class superC {
-	superC(int a){
-		    
-		}
+	superC(){}
+	superC(int a){}
 }
 
 class childC extends superC{
-
+	childC() { }
 	childC(int a) { }
 }
