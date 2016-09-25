@@ -1,4 +1,4 @@
-public class InsertTest{
+public class nsertTest{
 	public static void main(String[] args){
 		int num[] = {3,5,4,1,2};
 		int j=0;
