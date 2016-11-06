@@ -16,7 +16,7 @@ public class quickTest{
   }
 
   public static void quickSort(int[] data, int l , int r){
-    System.out.println("Enter quickSort");
+    System.out.println("Enter quickSort!");
 
     int pivot = data[(l+r)/2];
     System.out.println("pivot: " + pivot);
