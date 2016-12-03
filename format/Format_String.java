@@ -1,0 +1,18 @@
+import java.util.Locale;
+
+
+public class Format_String {
+	private static Object Data ="DB08478F6B79DA7DA1BA108950287815155DE5FDB21F32285B0CFF10010FB03E9161156CCDC309342769089A08B82E8E408B464CEC";
+	public static void main(String[] args) {
+
+		String test1 = String.format("EAUTH:%s,%s,\"%s\"","144", "0", Data);
+		String test2 = String.format("EAUTH:%d,%d,\"%s\"",0x90, 0, Data);
+		String test3 = String.format(Locale.US,"EAUTH:%d,%d,\"%s\"",0x90, 0, Data);
+
+		System.out.println("print1: "+ test1);
+		System.out.println("print2: "+ test2);
+		System.out.println("print2: "+ test3);
+
+	}
+}
+
