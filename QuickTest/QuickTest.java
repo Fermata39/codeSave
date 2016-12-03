@@ -50,6 +50,5 @@ public class QuickTest{
       if(r>left){
         quickSort(arr,left,r);
       }
-
   }
 }
