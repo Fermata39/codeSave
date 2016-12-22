@@ -1,5 +1,3 @@
-package mergeSort.sample;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +28,7 @@ public class mergeSortTest {
 
 		int middle = list.size() / 2;
 
-		List<Integer> leftList = list.subList(0, middle - 1);
+		List<Integer> leftList = list.subList(0, middle);
 		List<Integer> rightList = list.subList(middle, list.size());
 
 		return merge(mergeSort(leftList), mergeSort(rightList));
@@ -49,18 +47,18 @@ public class mergeSortTest {
 				returnList.add(lSort.get(left));
 				left++;
 			} else {
-				returnList.add(lSort.get(right));
+				returnList.add(rSort.get(right));
 				right++;
 			}
 		}
 
 		while (left < lSort.size()) {
-			returnList.add(left);
+			returnList.add(lSort.get(left));
 			left++;
 		}
 
 		while (right < rSort.size()) {
-			returnList.add(right);
+			returnList.add(rSort.get(right));
 			right++;
 		}
 
