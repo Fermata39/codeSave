@@ -4,6 +4,7 @@ import java.util.List;
 import org.w3c.dom.ls.LSInput;
 
 public class mergeSortTest {
+    static int cnt = 0;
 	public static void main(String[] args) {
 
 		List<Integer> list = new ArrayList<>();
@@ -26,12 +27,20 @@ public class mergeSortTest {
 		if (list.size() < 2)
 			return list;
 
+        System.out.println("list: " + list.toString());
 		int middle = list.size() / 2;
 
 		List<Integer> leftList = list.subList(0, middle);
 		List<Integer> rightList = list.subList(middle, list.size());
 
-		return merge(mergeSort(leftList), mergeSort(rightList));
+
+		List<Integer> lSort = mergeSort(leftList);
+		List<Integer> rSort = mergeSort(rightList);
+        
+        System.out.println("lSort res: " + lSort.toString());
+        System.out.println("rSort res: " + rSort.toString());
+        //return merge(mergeSort(leftList), mergeSort(rightList));
+        return merge(lSort,rSort);
 	}
 
 	private static List<Integer> merge(List<Integer> lSort, List<Integer> rSort) {
@@ -39,6 +48,11 @@ public class mergeSortTest {
 
 		int left = 0;
 		int right = 0;
+
+        //System.out.println("lSort: " + lSort.toString());
+        //System.out.println("rSort: " + rSort.toString());
+        System.out.println("call cnt:  " + cnt);
+        cnt++;
 
 		List<Integer> returnList = new ArrayList<>();
 
