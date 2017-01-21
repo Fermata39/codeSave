@@ -31,6 +31,7 @@ public class linkedlistTest {
         linkedlistTest test = new linkedlistTest();
 
         test = one;
+		// 같은 객체 type 이면 해당 주소 내용이 그대로 복사됨
 
         System.out.println("test: " + test.getElement());
         System.out.println("test: " + test.getNext().getElement());
