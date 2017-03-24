@@ -24,14 +24,14 @@ public class dlinkedSample{
         p = find(root,8);
         System.out.println("find: " + p.val);
 
-        
+
         //delete
 
         p = delete(root,p);
         System.out.println("delete: " + p.val);
 
 
-        
+
     }
 
     public static void init_node(Node node){
@@ -83,7 +83,7 @@ public class dlinkedSample{
         Node temp = p.prev;
 
         if(p.next !=null){
-          p.next.prev = p.prev;
+            p.next.prev = p.prev;
         }
 
         if(p.prev !=null){
@@ -91,12 +91,10 @@ public class dlinkedSample{
         }else{
             root = p.next;
         }
-        
+
         return temp;
 
     }
-
-
 }
 
 class Node{
