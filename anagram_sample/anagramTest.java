@@ -10,11 +10,48 @@ public class anagramTest{
         System.out.println("input String1:");
         String s2 = sc.nextLine();
 
-        boolean flag = isAnagram2(s1,s2);
+        // boolean flag = isAnagram1(s1,s2);
+        // boolean flag = isAnagram2(s1,s2);
+        boolean flag = isAnagram3(s1,s2);
 
         System.out.println("result: " + flag);
     }
 
+    public static boolean isAnagram3(String s1, String s2){
+      String str1 = isDeleteSpace(s1);
+      String str2 = isDeleteSpace(s2);
+
+      return isAnagram2(str1,str2);
+    }
+
+    public static String isDeleteSpace(String str){
+
+      char[] temp = new char[str.length()];
+      for(int i=0; i<str.length(); i++){
+        if(str.charAt(i) != ' '){
+            temp[i] = str.charAt(i);
+        }
+      }
+
+      String data = charToString(temp);
+
+      return data;
+    }
+
+    public static String charToString(char[] str){
+      StringBuffer sb = new StringBuffer();
+
+      for(int i=0; i<str.length; i++){
+        if(str[i] != ' '){
+          sb.append(str[i]);
+        }
+      }
+
+      return sb.toString();
+    }
+
+
+    //Ascii case 고려
     public static boolean isAnagram2(String s1, String s2){
       int[] flag = new int[128]; // if ascii 일 경우
 
@@ -31,7 +68,7 @@ public class anagramTest{
 
       return true;
     }
-
+    // 대소문자 case 고려
     public static boolean isAnagram(String s1, String s2){
         int[] cnt1 = new int[26];
         int[] cnt2 = new int[26];
