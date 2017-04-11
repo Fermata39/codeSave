@@ -23,7 +23,7 @@ public class anagramTest{
 
       return isAnagram2(str1,str2);
     }
-
+    // 공백제거를 위한 code
     public static String isDeleteSpace(String str){
 
       char[] temp = new char[str.length()];
@@ -37,7 +37,7 @@ public class anagramTest{
 
       return data;
     }
-
+    // char to String 을 위한 code
     public static String charToString(char[] str){
       StringBuffer sb = new StringBuffer();
 
@@ -49,7 +49,6 @@ public class anagramTest{
 
       return sb.toString();
     }
-
 
     //Ascii case 고려
     public static boolean isAnagram2(String s1, String s2){
