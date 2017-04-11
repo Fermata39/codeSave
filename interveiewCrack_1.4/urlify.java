@@ -1,64 +1,63 @@
 import java.util.*;
 
-public class urlify {
+public class exercise{
 	public static void main(String[] args){
-		String str = "Mr John Smith    ";
-		char[] text = new char[str.length()];
+		String input = "Mr Jone Smith ";
+		char[] str = convertToChar(input);
+		int truelength = calTrueLength(str)+1;
+		int nullCnt = calNullCnt(str,truelength);
 
-		for(int i =0;i<str.length(); i++){
-			text[i] = str.charAt(i);
-		}
-
-		int truelength = isTrueLength(text)+1;
-		System.out.println("truelength:" + truelength);
-
-		replaceSpaces(text,truelength);
-
+		replaceSpaces(str,nullCnt,truelength);
 	}
 
-	public static void replaceSpaces(char[] text , int truelength){
-		int nullspace = isCheckSpace(text,truelength);
-		System.out.println("null: " + nullspace);
+	public static void replaceSpaces(char[] str, int nullCnt, int truelength){
 
-		int index = truelength + (nullspace*2);
-		System.out.println("index: " + index);
+		int index = truelength + (nullCnt*2);
+		char[] temp = new char[index];
+		str[truelength] = '\0';
 
-		text[truelength]='\0';
-
-		for(int i = truelength - 1; i >= 0; i--){
-			if(text[i] == ' '){
-				text[index-1] = '0';
-				text[index-2] = '2';
-				text[index-3] = '%';
+		for(int i = truelength-1; i>=0; i--){
+			if(str[i] == ' '){
+				temp[index-1] = '0';
+				temp[index-2] = '2';
+				temp[index-3] = '%';
 
 				index -=3;
 			}else{
-				// index--;
-				text[index-1] = text[i];
+				temp[index-1] = str[i];
 				index--;
 			}
 		}
-
-		charToString(text);
-
+		charToString(temp);
 	}
 
-	public static void charToString(char[] strs){
+	public static void charToString(char[] str){
 		StringBuffer sb = new StringBuffer();
 
-		for(char str : strs){
-			if(str != ' '){
-				sb.append(str);
+		for(char ch : str){
+			if(ch != ' '){
+				sb.append(ch);
 			}
 		}
 
-		System.out.println("result: "+ sb.toString());
+		System.out.println("result: " + sb.toString());
+
 	}
 
-	public static int isTrueLength(char[] str){
+	public static int calNullCnt(char[] str , int truelength){
+		int cnt = 0;
+		for(int i =0; i<truelength; i++){
+			if(str[i] == ' '){
+				cnt++;
+			}
+		}
 
-		int cnt = 0 ;
-		for(int i=str.length-1; i >= 0; i--){
+		return cnt;
+	}
+
+	public static int calTrueLength(char[] str){
+
+		for(int i = str.length-1; i>=0; i--){
 			if(str[i] != ' '){
 				return i;
 			}
@@ -67,14 +66,14 @@ public class urlify {
 		return -1;
 	}
 
-	public static int isCheckSpace(char[] text,int truelength){
-		int cnt = 0;
-		for(int i=0; i<truelength; i++){
-			if(text[i] == ' '){
-				cnt++;
-			}
+	public static char[] convertToChar(String input){
+
+		char[] str = new char[input.length()];
+		for(int i=0; i<input.length(); i++){
+			str[i] = input.charAt(i);
 		}
 
-		return cnt;
+		return str;
 	}
 }
+
