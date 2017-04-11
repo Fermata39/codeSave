@@ -19,10 +19,13 @@ public class anagramTest{
         int[] cnt1 = new int[26];
         int[] cnt2 = new int[26];
 
+        String str1,str2;
         for(int i=0; i<s1.length();i++){
+            str1 = s1.toLowerCase();
             cnt1[s1.charAt(i)-'a']+=1;
         }
         for(int i=0; i<s2.length();i++){
+            str2 = s2.toLowerCase();
             cnt2[s2.charAt(i)-'a']+=1;
         }
         for(int i='a'; i<='z';i++){
