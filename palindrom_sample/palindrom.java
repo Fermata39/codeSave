@@ -3,25 +3,50 @@ import java.util.*;
 public class palindrom {
 
     public static void main(String[] args){
+      Scanner sc = new Scanner(System.in);
+      System.out.println("input String: ");
 
-        System.out.println("input String: ");
-        Scanner sc = new Scanner(System.in);
+      String s = sc.nextLine();
 
-        boolean flag = is_palindrom(sc.nextLine());
+      char[] str = removeNullSpace(s);
 
-        System.out.println("res flag: " + flag);
-
+      is_palindrom(changeToString(str));
     }
 
-    public static boolean is_palindrom(String s){
-        int size = s.length();
+    public static void is_palindrom(String str){
 
-        for(int i=0; i<size/2;i++){
-            if(s.charAt(i) != s.charAt(size-i-1)){
-                return false;
-            }
+      for(int i =0;i <str.length()/2; i++){
+          if(str.charAt(i) != str.charAt(str.length()-i-1)){
+            System.out.println("result: " + false);
+            return;
+          }
+      }
+
+      System.out.println("result: " + true);
+    }
+
+    public static String changeToString(char[] str){
+      StringBuffer sb = new StringBuffer();
+
+      for(char c : str){
+        if(c != 0){
+          sb.append(c);
         }
+      }
 
-        return true;
+      return sb.toString();
+    }
+
+    public static char[] removeNullSpace(String s){
+
+      char[] str = new char[s.length()];
+
+      for(int i=0; i<s.length(); i++){
+        if(s.charAt(i) != ' '){
+          str[i] = s.charAt(i);
+        }
+      }
+
+      return str;
     }
 }
