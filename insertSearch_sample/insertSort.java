@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class insertSort{
 	public static void main(String[] args){
 
@@ -18,8 +20,6 @@ public class insertSort{
 			}
 		}
 
-		for(int i=0; i<ary.length; i++){
-			System.out.println("res: " + ary[i]);
-		}
+		System.out.println("res:" + Arrays.toString(ary));
 	}
 }
