@@ -8,7 +8,7 @@ public class bubble{
 	}
 
 	public static int[] swap(int[] arr, int i, int j){
-		
+
 		int tmp = arr[i];
 		arr[i] = arr[j];
 		arr[j] = tmp;
@@ -16,7 +16,7 @@ public class bubble{
 		return arr;
 	}
 	public static void bubbleSort(int[] arr){
-		
+
 		for(int i =0 ; i<arr.length; i++){
 			for(int j = i+1; j<arr.length; j++){
 				if(arr[i] > arr[j]){
@@ -26,7 +26,7 @@ public class bubble{
 		}
 
 		System.out.println("Bubble: " + Arrays.toString(arr));
-	
+
 	}
 
 }
