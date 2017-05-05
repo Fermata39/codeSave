@@ -92,6 +92,7 @@ class List {
 			return;
 		}
 
+		System.out.println("enter selected Remove Data: " + data);
 		System.out.println("index: " + index + " data: " + data);
 		Node prev = getNode(index - 1);
 		Node remove = prev.next;
