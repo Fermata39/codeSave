@@ -1,77 +1,76 @@
+import java.util.*;
+
 public class mergeSort{
     static int[] arry = {3,4,1,2,6,5,9,7,8};
+    static int[] temp = new int[arry.length];
 
     public static void main(String[] args){
 
         int left = 0;
         int right = arry.length;
-        int mid = arry.length/2;
-        //System.out.println("mid : " + mid);
 
-        mergeSort(left,right);
+        System.out.println("before: " + Arrays.toString(arry));
+        mergeSort(left,right-1);
+
+        System.out.println("after: " + Arrays.toString(arry));
+
     }
 
-    public static int[] mergeSort(int left, int right){
-
+    public static void mergeSort(int left, int right){
+        //arry 값이 2 보다 작을 경우 return
         if(arry.length <2){
-            return arry;
+            return;
         }
 
+        // left 와 right 를 비교 
         if(left < right){
-            
-            int mid = (left + right)/2; 
 
-            if(arry[left] > arry[mid]){
-                int temp = arry[left];
-                arry[left] = arry[mid];
-                arry[mid] = temp;
-                left++;
+            int mid = (left+right)/2;
 
-                mergeSort(left,mid);
-            }
+            mergeSort(left,mid);
+            mergeSort(mid+1,right);
 
-            if(arry[mid+1]>arry[right]){
-                int temp = arry[mid+1];
-                arry[mid+1] = arry[right];
-                arry[right] = temp;
-                right--;
-
-                mergeSort(mid+1 , right);
-            }
-
-            merge(left,right,mid);
+            merge(left,right);
         }
-
-        return arry; 
     }
 
-    public static void merge(int left, int right,int mid){
-        
-        int[] temp = null;
-        for(int i=left; i<=right; i++){
+    public static void merge(int left, int right) {
+
+        //임시 int 배열 생성
+        int[] temp = new int[arry.length];
+
+        for(int i =left; i<=right; i++){
             temp[i] = arry[i];
         }
 
-        int l = left;
-        int r = right;
+        int l=left;
+        int i=left;
+        int mid = (left+right)/2;
         int m = mid+1;
 
-        while(left <= mid && mid+1 <= right){
-            if(temp[l] > temp[mid]){
-                int tmp = temp[mid];
-                temp[mid] = temp[left];
-                temp[left] = tmp;
+        while(l<=mid && m <= right){
+        
+            if(temp[l] <= temp[m]){
+                arry[i] = temp[l];
                 l++;
+            }else{
+                arry[i] = temp[m];
+                m++;
             }
-
-            if(temp[r] < temp[m]){
-                int tmp = temp[r];
-                temp[r] = temp[m];
-                temp[m] = tmp;
-                r--;
-            }
+            i++;
         }
 
-    
+        while(l<=mid){
+            arry[i] = temp[l];
+            i++;
+            l++;
+        }
+
+        while(m<=right){
+            arry[i] = temp[m];
+            m++;
+            i++;
+        }
+
     }
 }
