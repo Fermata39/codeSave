@@ -11,6 +11,7 @@ public class reverseList{
         list.print();
         System.out.println("size: " + list.size);
         
+		list.reverse();
     }
 }
 
@@ -56,7 +57,17 @@ class list{
         Node prev = null;
 
         while(current != null){
+			next = current.next;
+			current.next = prev;
+			prev = current;
+			current = next;
         }
+
+		while(prev != null){
+			System.out.println("reverse: " + prev.data);
+			prev = prev.next;
+		}
+
     }
 }
 
