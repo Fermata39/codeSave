@@ -2,7 +2,7 @@ import java.util.*;
 
 public class reverseList{
     public static void main(String[] args){
-    
+
         list list = new list();
         list.add(5);
         list.add(3);
@@ -10,13 +10,15 @@ public class reverseList{
 
         list.print();
         System.out.println("size: " + list.size);
-        
-		list.reverse();
+
+        list.reverse();
+
+        list.reverseTest(list.head);
     }
 }
 
 class list{
-    
+
     Node head = null;
     int size =0;    
     class Node{
@@ -32,7 +34,7 @@ class list{
 
     void add(int data){
         Node node = new Node(data);
-        
+
         if(head == null){
             head = node;
         }else{
@@ -50,24 +52,53 @@ class list{
             temp = temp.next;
         }
     }
-
+    void print2(Node node){
+        Node temp = node;
+        while(temp != null){
+            System.out.println("print: " + temp.data);
+            temp = temp.next;
+        }
+    }
     void reverse(){
         Node current = head;
         Node next = null;
         Node prev = null;
 
         while(current != null){
-			next = current.next;
-			current.next = prev;
-			prev = current;
-			current = next;
+            next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+        }
+        
+        System.out.println("reverse");
+        print2(prev);
+    }
+
+    Node recursiveReverse(Node node){
+        Node current = node;
+
+        if(current == null){
+            return current;
+        }
+        if(current.next == null){
+            return current;
         }
 
-		while(prev != null){
-			System.out.println("reverse: " + prev.data);
-			prev = prev.next;
-		}
+        Node second = current.next;
+        current.next = null;
 
+        Node rest = recursiveReverse(second);
+        second = current;
+
+        return rest;
+    }
+
+    void reverseTest(Node node){
+        Node temp = recursiveReverse(node);
+
+        System.out.println("recursive reverse");
+        print2(temp);
     }
 }
 
