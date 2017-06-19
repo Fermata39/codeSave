@@ -4,6 +4,7 @@ public class StringToInt{
     public static void main(String[] args){
         convertStringToInt("123");
         convertStringToInt2("123");
+        convertStringToInt3("123");
     }
 
     public static void convertStringToInt(String num){
@@ -24,5 +25,17 @@ public class StringToInt{
     }
 
     public static void convertStringToInt2(String num){
+        System.out.println("sum2: " + Integer.parseInt(num));
+    }
+
+    public static void convertStringToInt3(String num){
+        
+        int sum=0;
+        for(int i=0; i<num.length(); i++){
+            sum *= 10;
+            sum += num.charAt(i)-'0';
+        }
+
+        System.out.println("sum3: " + sum);
     }
 }
