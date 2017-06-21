@@ -15,57 +15,61 @@ public class anagramTest{
         boolean flag = isAnagram3(s1,s2);
 
         System.out.println("result: " + flag);
+
+        System.out.println("map anagrm : " + isAnagramMap(s1,s2));
+
+
     }
 
     public static boolean isAnagram3(String s1, String s2){
-      String str1 = isDeleteSpace(s1);
-      String str2 = isDeleteSpace(s2);
+        String str1 = isDeleteSpace(s1);
+        String str2 = isDeleteSpace(s2);
 
-      return isAnagram2(str1,str2);
+        return isAnagram2(str1,str2);
     }
     // 공백제거를 위한 code
     public static String isDeleteSpace(String str){
 
-      char[] temp = new char[str.length()];
-      for(int i=0; i<str.length(); i++){
-        if(str.charAt(i) != ' '){
-            temp[i] = str.charAt(i);
+        char[] temp = new char[str.length()];
+        for(int i=0; i<str.length(); i++){
+            if(str.charAt(i) != ' '){
+                temp[i] = str.charAt(i);
+            }
         }
-      }
 
-      String data = charToString(temp);
+        String data = charToString(temp);
 
-      return data;
+        return data;
     }
     // char to String 을 위한 code
     public static String charToString(char[] str){
-      StringBuffer sb = new StringBuffer();
+        StringBuffer sb = new StringBuffer();
 
-      for(int i=0; i<str.length; i++){
-        if(str[i] != ' '){
-          sb.append(str[i]);
+        for(int i=0; i<str.length; i++){
+            if(str[i] != ' '){
+                sb.append(str[i]);
+            }
         }
-      }
 
-      return sb.toString();
+        return sb.toString();
     }
 
     //Ascii case 고려
     public static boolean isAnagram2(String s1, String s2){
-      int[] flag = new int[128]; // if ascii 일 경우
+        int[] flag = new int[128]; // if ascii 일 경우
 
-      for(int i=0; i<s1.length(); i++){
-        flag[s1.toLowerCase().charAt(i)]++;
-      }
-
-      for(int i=0; i<s2.length(); i++){
-        flag[s2.toLowerCase().charAt(i)]--;
-        if(flag[s2.charAt(i)] < 0 ){
-          return false;
+        for(int i=0; i<s1.length(); i++){
+            flag[s1.toLowerCase().charAt(i)]++;
         }
-      }
 
-      return true;
+        for(int i=0; i<s2.length(); i++){
+            flag[s2.toLowerCase().charAt(i)]--;
+            if(flag[s2.charAt(i)] < 0 ){
+                return false;
+            }
+        }
+
+        return true;
     }
     // 대소문자 case 고려
     public static boolean isAnagram(String s1, String s2){
@@ -89,5 +93,39 @@ public class anagramTest{
 
         return true;
 
+    }
+
+    public static boolean isAnagramMap(String s1, String s2){
+
+        if(s1.length() != s2.length()){
+            return false;
+        }
+
+        char[] cs1 = s1.toCharArray();
+        char[] cs2 = s2.toCharArray();
+
+        Map<Character, Integer> map = new HashMap<>();
+
+        for(char c : cs1){
+            if(map.containsKey(c)){
+                map.put(c,map.get(c)+1);
+            }else{
+                map.put(c,1);
+            }
+        }
+
+        for(char c: cs2){
+            if(map.containsKey(c)){
+                map.put(c,map.get(c)-1);
+            }else{
+                return false;
+            }
+
+            if(map.get(c) < 0){
+                return false;
+            }
+        }
+
+        return true;
     }
 }
