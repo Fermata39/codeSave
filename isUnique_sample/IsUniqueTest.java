@@ -13,8 +13,7 @@ public class IsUniqueTest{
         int num =0 ;
         for(char c : ca){
             if(!map.containsKey(c)){
-                map.put(c,num);
-                num++;
+                map.put(c,num++);
             }else{
                 return false;
             }

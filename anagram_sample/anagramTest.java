@@ -95,6 +95,19 @@ public class anagramTest{
 
     }
 
+    public static char[] removeNullSpace(char[] cs){
+        
+        StringBuffer sb = new StringBuffer();
+        for(char c : cs){
+            if(c != ' '){
+                sb.append(c);
+            }
+        }
+
+        char[] c = sb.toString().toCharArray();
+        return c;
+    }
+
     public static boolean isAnagramMap(String s1, String s2){
 
         if(s1.length() != s2.length()){
@@ -103,6 +116,9 @@ public class anagramTest{
 
         char[] cs1 = s1.toCharArray();
         char[] cs2 = s2.toCharArray();
+
+        cs1 = removeNullSpace(cs1);
+        cs2 = removeNullSpace(cs2);
 
         Map<Character, Integer> map = new HashMap<>();
 
