@@ -14,7 +14,7 @@ public class commpressBad{
 	}
 
 	public static void isCheckStr3(String str){
-		char ch = ' ';
+		char ch = ca[0];
 		int cnt = 1;
 		char[] ca = str.toCharArray();
 		StringBuffer sb = new StringBuffer();
@@ -24,12 +24,12 @@ public class commpressBad{
 		}
 
 		for( int i=1 ; i<str.length(); i++){
-			ch = ca[i-1];
 
 			if(ch == ca[i]){
 				cnt++;
 			}else{
 				sb.append(String.valueOf(ch)).append(cnt);
+				ch = ca[i];
 				cnt = 1;
 			}
 		}
