@@ -1,32 +1,46 @@
 package input;
 
+import category.Category;
+import category.NewCategory;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
 public class InputAccount {
-    String category;
+    String categoryType;
     int money;
     Date date;
     String useAccountType;
     String description;
+    Category category;
+
+    public InputAccount() {
+        category = new Category();
+    }
 
     public void inputContents() {
         Scanner sc = new Scanner(System.in);
 
         System.out.print("Input Category: ");
-        setCategory(sc.next());
+        setCategory(categoryType = sc.next());
         System.out.print("Input money: ");
+        setMoney(money = sc.nextInt());
 
     }
 
 
     public String getCategory() {
-        return category;
+        return categoryType;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setCategory(String categoryType) {
+        if(!category.IsExsitCategory(categoryType)){
+            NewCategory newCategory = new NewCategory();
+            newCategory.setCategory(categoryType);
+        }else{
+            this.categoryType = categoryType;
+        }
     }
 
     public int getMoney() {
