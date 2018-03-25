@@ -4,7 +4,9 @@ import category.Category;
 import category.NewCategory;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Scanner;
 
 public class InputAccount {
@@ -14,19 +16,31 @@ public class InputAccount {
     String useAccountType;
     String description;
     Category category;
+    NewCategory newCategory;
+    ArrayList<InputAccount> list;
+    InputAccount inputAccount;
 
     public InputAccount() {
+        list = new ArrayList<>();
         category = new Category();
     }
 
-    public void inputContents() {
+    public InputAccount inputContents() {
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("Input Category: ");
-        setCategory(categoryType = sc.next());
-        System.out.print("Input money: ");
-        setMoney(money = sc.nextInt());
+        inputAccount = new InputAccount();
+        inputAccount.setDate();
 
+        System.out.print("Input Category: ");
+        inputAccount.setCategory(categoryType = sc.next());
+        System.out.print("Input money: ");
+        inputAccount.setMoney(money = sc.nextInt());
+//        System.out.print("Input useAccountType: ");
+//        inputAccount.setUseAccountType(useAccountType = sc.next());
+//        System.out.println("Input desciption: ");
+//        inputAccount.setDescription(description = sc.next());
+
+        return inputAccount;
     }
 
 
@@ -36,8 +50,11 @@ public class InputAccount {
 
     public void setCategory(String categoryType) {
         if(!category.IsExsitCategory(categoryType)){
-            NewCategory newCategory = new NewCategory();
+            System.out.println("Create New Category");
+            newCategory = new NewCategory();
             newCategory.setCategory(categoryType);
+            this.categoryType = newCategory.getCategory();
+
         }else{
             this.categoryType = categoryType;
         }
