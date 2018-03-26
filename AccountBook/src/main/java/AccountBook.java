@@ -1,10 +1,7 @@
-import category.Category;
-import category.NewCategory;
 import input.InputAccount;
 import menu.AccountMenu;
 import print.PrintAccount;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -18,7 +15,7 @@ public class AccountBook {
         list = accountMenu.menu();
 
         PrintAccount printAccount = new PrintAccount(list);
-        printAccount.print();
+        printAccount.printCurrntInfo();
 
     }
 }

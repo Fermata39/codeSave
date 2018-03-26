@@ -8,15 +8,14 @@ import java.util.Scanner;
 
 public class AccountMenu {
     List<InputAccount> accountinfo;
-//    InputAccount inputAccount;
 
     public AccountMenu() {
         accountinfo = new ArrayList<>();
-//        inputAccount = new InputAccount();
     }
 
     public List menu() {
 
+        // file read
         if (accountinfo.size() != 0) {
             //file read
         } else {
@@ -32,12 +31,14 @@ public class AccountMenu {
 
                 } catch (Exception e) {
                     System.out.println("잘못 입력하셨습니다");
+                    sc.nextLine();
                     continue;
                 }
 
                 if (end != 0) {
                     accountinfo.add(new InputAccount().inputContents());
                 } else {
+                    // file save
                     break;
                 }
             }

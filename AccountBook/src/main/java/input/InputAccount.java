@@ -6,7 +6,6 @@ import category.NewCategory;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.Scanner;
 
 public class InputAccount {
@@ -42,7 +41,6 @@ public class InputAccount {
 
         return inputAccount;
     }
-
 
     public String getCategory() {
         return categoryType;
