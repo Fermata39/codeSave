@@ -7,21 +7,22 @@ import java.util.List;
 import java.util.Scanner;
 
 public class AccountMenu {
-    List<InputAccount> accountinfo;
+    private List<InputAccount> accountinfo;
 
     public AccountMenu() {
         accountinfo = new ArrayList<>();
     }
 
-    public List menu() {
+    public List<InputAccount> menu() {
 
         // file read
         if (accountinfo.size() != 0) {
             //file read
+            System.out.println("account size is not null");
         } else {
 
             Scanner sc = new Scanner(System.in);
-            int end = 0;
+            int end;
 
             while (true) {
                 System.out.println("종료를 원하시면 0을 입력하세요: ");

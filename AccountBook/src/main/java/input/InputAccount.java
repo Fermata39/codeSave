@@ -4,30 +4,26 @@ import category.Category;
 import category.NewCategory;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
 public class InputAccount {
-    String categoryType;
-    int money;
-    Date date;
-    String useAccountType;
-    String description;
-    Category category;
-    NewCategory newCategory;
-    ArrayList<InputAccount> list;
-    InputAccount inputAccount;
+    private String categoryType;
+    private int money;
+    private Date date;
+    private String useAccountType;
+    private String description;
+    private Category category;
 
     public InputAccount() {
-        list = new ArrayList<>();
+//        list = new ArrayList<>();
         category = new Category();
     }
 
     public InputAccount inputContents() {
         Scanner sc = new Scanner(System.in);
 
-        inputAccount = new InputAccount();
+        InputAccount inputAccount = new InputAccount();
         inputAccount.setDate();
 
         System.out.print("Input Category: ");
@@ -46,14 +42,16 @@ public class InputAccount {
         return categoryType;
     }
 
-    public void setCategory(String categoryType) {
-        if(!category.IsExsitCategory(categoryType)){
+    private void setCategory(String categoryType) {
+        NewCategory newCategory;
+
+        if (!category.IsExsitCategory(categoryType)) {
             System.out.println("Create New Category");
             newCategory = new NewCategory();
             newCategory.setCategory(categoryType);
             this.categoryType = newCategory.getCategory();
 
-        }else{
+        } else {
             this.categoryType = categoryType;
         }
     }
@@ -62,7 +60,7 @@ public class InputAccount {
         return money;
     }
 
-    public void setMoney(int money) {
+    private void setMoney(int money) {
         this.money = money;
     }
 
@@ -71,7 +69,7 @@ public class InputAccount {
         return simpleDateFormat.format(date);
     }
 
-    public void setDate() {
+    private void setDate() {
         date = new Date();
     }
 

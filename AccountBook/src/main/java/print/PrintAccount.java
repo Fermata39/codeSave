@@ -5,7 +5,7 @@ import input.InputAccount;
 import java.util.List;
 
 public class PrintAccount {
-    List<InputAccount> accountInfo;
+    private List<InputAccount> accountInfo;
 
     public PrintAccount(List<InputAccount> accountInfo) {
         this.accountInfo = accountInfo;
@@ -14,13 +14,13 @@ public class PrintAccount {
     public void printCurrntInfo() {
         System.out.println("account Info");
 
-        for (int i = 0; i < accountInfo.size(); i++) {
+        for (InputAccount anAccountInfo : accountInfo) {
             System.out.println(
-                    accountInfo.get(i).getDate() + " / "
-                            + accountInfo.get(i).getCategory() + " / "
-                            + accountInfo.get(i).getMoney() + " / "
-                            + accountInfo.get(i).getUseAccountType() + " / "
-                            + accountInfo.get(i).getDescription());
+                    anAccountInfo.getDate() + " / "
+                            + anAccountInfo.getCategory() + " / "
+                            + anAccountInfo.getMoney() + " / "
+                            + anAccountInfo.getUseAccountType() + " / "
+                            + anAccountInfo.getDescription());
         }
     }
 

@@ -1,7 +1,7 @@
 package category;
 
 public class NewCategory {
-    String category;
+    private String category;
 
     public void setCategory(String category) {
         this.category = category;

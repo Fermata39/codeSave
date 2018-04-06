@@ -1,14 +1,14 @@
 package category;
 
 public enum CategoryTable {
-    Food,
-    Traffic,
-    Communicate,
+    FOOD,
+    TRAFFIC,
+    COMMUNICATE,
     생활용품,
-    건강,
-    교육,
+    HELTH,
+    EDU,
     경조사,
-    세금,
+    TAX,
     문화생활,
     용돈
 }
