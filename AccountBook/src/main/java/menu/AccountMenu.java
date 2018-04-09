@@ -1,12 +1,10 @@
 package menu;
 
-import com.sun.deploy.association.utility.AppAssociationWriterFactory;
 import factory.WriterFactory;
 import input.InputAccount;
 import write.CvsWriter;
 import write.FileWriter;
 
-import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -27,37 +25,48 @@ public class AccountMenu {
         } else {
 
             Scanner sc = new Scanner(System.in);
-            int end;
+            int selectItem;
             WriterFactory writerFactory = new WriterFactory();
-            switch (sc.nextInt()) {
-                case 0:
-                    FileWriter fileWriter = (FileWriter) writerFactory.createFactory("write.FileWriter");
-                    fileWriter.write(accountinfo);
-                    break;
 
-                case 1:
-                    CvsWriter cvsWriter = (CvsWriter) writerFactory.createFactory("write.CvsWriter");
-                    break;
-
-            }
 
             while (true) {
-                System.out.println("종료를 원하시면 0을 입력하세요: ");
+                System.out.println("0. 종료");
+                System.out.println("1. 입력");
+                System.out.println("2. File 저장");
+                System.out.print("INPUT: ");
 
                 try {
-                    end = sc.nextInt();
+                    selectItem = sc.nextInt();
+
+                    switch (selectItem) {
+                        case 0:
+
+                            break;
+                        case 1:
+                            accountinfo.add(new InputAccount().inputContents());
+                            break;
+                        case 2:
+                            System.out.println("File Write");
+                            FileWriter fileWriter = (FileWriter) writerFactory.createWriterFactory("write.FileWriter");
+                            fileWriter.write(accountinfo);
+                            break;
+
+                        case 3:
+                            CvsWriter cvsWriter = (CvsWriter) writerFactory.createWriterFactory("write.CvsWriter");
+                            break;
+
+                    }
+
+                    if (selectItem == 0) {
+                        break;
+                    } else {
+                        continue;
+                    }
 
                 } catch (Exception e) {
                     System.out.println("잘못 입력하셨습니다");
                     sc.nextLine();
                     continue;
-                }
-
-                if (end != 0) {
-                    accountinfo.add(new InputAccount().inputContents());
-                } else {
-                    // file save
-                    break;
                 }
             }
         }

@@ -2,15 +2,14 @@ package factory;
 
 /**
  * Created by shinkook.kim on 2018-04-09.
+ * WriterFactory : write File for account
  */
 public class WriterFactory {
-    public Object createFactory(String classInfo) {
+    public Object createWriterFactory(String classInfo) {
         try {
-            Object object = classInfo.getClass().newInstance();
-            return object;
-        }catch (Exception e){
+            return Class.forName(classInfo).newInstance();
+        } catch (Exception e) {
             return null;
         }
-
     }
 }
