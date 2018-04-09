@@ -53,20 +53,17 @@ public class AccountMenu {
 
                         case 3:
                             CvsWriter cvsWriter = (CvsWriter) writerFactory.createWriterFactory("write.CvsWriter");
+                            cvsWriter.write(accountinfo);
                             break;
-
                     }
 
                     if (selectItem == 0) {
                         break;
-                    } else {
-                        continue;
                     }
 
                 } catch (Exception e) {
                     System.out.println("잘못 입력하셨습니다");
                     sc.nextLine();
-                    continue;
                 }
             }
         }
