@@ -8,30 +8,31 @@ public class lengthOfLongestSubstring {
     }
 
     private static int CalllengthOfLongestSubstring(String s) {
-
         HashSet<Character> set = new HashSet<>();
 
-        int ans[] = new int[s.length()];
+        int max = 0;
+
+        if (s.length() == 1) {
+            return 1;
+        }
+
         for (int i = 0; i < s.length(); i++) {
-            if (!set.contains(s.charAt(i))) {
-                set.add(s.charAt(i));
-            } else {
-                ans[i] = set.size();
-                set.clear();
-                set.add(s.charAt(i));
+
+            set.add(s.charAt(i));
+
+            for (int j = i+1; j < s.length(); j++) {
+                if (!set.contains(s.charAt(j))) {
+                    set.add(s.charAt(j));
+                    max = Math.max(max, set.size());
+                } else {
+                    max = Math.max(max, set.size());
+                    set.clear();
+                    break;
+                }
             }
         }
-        int max = set.size();
-
-        for (int i = 0; i < ans.length; i++) {
-            if (ans[i] < max) {
-                continue;
-            } else {
-                max = ans[i];
-            }
-        }
-
         return max;
+
     }
 }
 
